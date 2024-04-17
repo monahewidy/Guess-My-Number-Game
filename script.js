@@ -16,13 +16,23 @@ document.querySelector('.check').addEventListener('click', function () {
   } else if (guess === secretNumber) {
     resultMessage = '🎉 Correct number!';
   } else if (guess < secretNumber) {
-    resultMessage = '📉 Too low!';
-    score = score - 1;
-    document.querySelector('.score').textContent = score;
+    if (score > 1) {
+      resultMessage = '📉 Too low!';
+      score = score - 1;
+      document.querySelector('.score').textContent = score;
+    } else {
+      (resultMessage = 'You lost the game!'),
+        (document.querySelector('.score').textContent = 0);
+    }
   } else if (guess > secretNumber) {
-    resultMessage = '📈 Too high!';
-    score--;
-    document.querySelector('.score').textContent = score;
+    if (score > 1) {
+      resultMessage = '📈 Too high!';
+      score--;
+      document.querySelector('.score').textContent = score;
+    } else {
+      (resultMessage = 'You lost the game!'),
+        (document.querySelector('.score').textContent = 0);
+    }
   }
   // Update the text content of the ".message" element with the updated resultMessage
   document.querySelector('.message').textContent = resultMessage;

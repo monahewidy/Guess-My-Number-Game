@@ -1,8 +1,10 @@
 'use strict';
 let resultMessage = 'Start guessing...';
 // write the rule
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 document.querySelector('.number').textContent = secretNumber;
+document.querySelector('.number').textContent = '?';
+
 // declare the score is staeting with 20
 let score = 20;
 // add click event to the check button to start game
@@ -29,6 +31,7 @@ document.querySelector('.check').addEventListener('click', function () {
     } else {
       resultMessage = 'You lost the game!';
       document.querySelector('.score').textContent = 0;
+      document.querySelector('body').style.backgroundColor = '#FF0000';
     }
   }
   // when guess too high
@@ -40,18 +43,18 @@ document.querySelector('.check').addEventListener('click', function () {
     } else {
       resultMessage = 'You lost the game!';
       document.querySelector('.score').textContent = 0;
+      document.querySelector('body').style.backgroundColor = '#FF0000';
     }
   }
   // Update the text content of the ".message" element with the updated resultMessage
   document.querySelector('.message').textContent = resultMessage;
 });
-
+// add reset in again button
 document.querySelector('.again').addEventListener('click', function () {
-  score = 20;
-  document.querySelector('.score').textContent = score;
   secretNumber = Math.trunc(Math.random() * 20) + 1;
+  document.querySelector('.score').textContent = 20;
   document.querySelector('.message').textContent = resultMessage;
   document.querySelector('.number').textContent = '?';
-  document.querySelector('.guess').textContent = '';
+  document.querySelector('.guess').value = '';
   document.querySelector('body').style.backgroundColor = '#222';
 });

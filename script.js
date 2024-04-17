@@ -45,3 +45,13 @@ document.querySelector('.check').addEventListener('click', function () {
   // Update the text content of the ".message" element with the updated resultMessage
   document.querySelector('.message').textContent = resultMessage;
 });
+
+document.querySelector('.again').addEventListener('click', function () {
+  score = 20;
+  document.querySelector('.score').textContent = score;
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  document.querySelector('.message').textContent = resultMessage;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.guess').textContent = '';
+  document.querySelector('body').style.backgroundColor = '#222';
+});

@@ -1,5 +1,6 @@
 'use strict';
 let resultMessage = 'Start guessing...';
+let highscore = 0;
 // write the rule
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 document.querySelector('.number').textContent = secretNumber;
@@ -21,6 +22,10 @@ document.querySelector('.check').addEventListener('click', function () {
   else if (guess === secretNumber) {
     resultMessage = '🎉 Correct number!';
     document.querySelector('body').style.backgroundColor = '#60b347';
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = highscore;
+    }
   }
   // when guess too low
   else if (guess < secretNumber) {
@@ -52,9 +57,12 @@ document.querySelector('.check').addEventListener('click', function () {
 // add reset in again button
 document.querySelector('.again').addEventListener('click', function () {
   secretNumber = Math.trunc(Math.random() * 20) + 1;
-  document.querySelector('.score').textContent = 20;
+  let resultMessage = 'Start guessing...';
+  score = 20;
+  document.querySelector('.score').textContent = score;
   document.querySelector('.message').textContent = resultMessage;
   document.querySelector('.number').textContent = '?';
   document.querySelector('.guess').value = '';
   document.querySelector('body').style.backgroundColor = '#222';
+  // document.querySelector('.highscore').textContent = highscore;
 });

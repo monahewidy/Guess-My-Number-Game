@@ -26,23 +26,9 @@ document.querySelector('.check').addEventListener('click', function () {
       highscore = score;
       document.querySelector('.highscore').textContent = highscore;
     }
-  }
-  // when guess too low
-  else if (guess < secretNumber) {
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      resultMessage = '📉 Too low!';
-      score = score - 1;
-      document.querySelector('.score').textContent = score;
-    } else {
-      resultMessage = 'You lost the game!';
-      document.querySelector('.score').textContent = 0;
-      document.querySelector('body').style.backgroundColor = '#FF0000';
-    }
-  }
-  // when guess too high
-  else if (guess > secretNumber) {
-    if (score > 1) {
-      resultMessage = '📈 Too high!';
+      resultMessage = guess > secretNumber ? '📈 Too high!' : '📉 Too low!';
       score--;
       document.querySelector('.score').textContent = score;
     } else {
@@ -51,6 +37,30 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('body').style.backgroundColor = '#FF0000';
     }
   }
+  // when guess too low
+  // else if (guess < secretNumber) {
+  //   if (score > 1) {
+  //     resultMessage = '📉 Too low!';
+  //     score = score - 1;
+  //     document.querySelector('.score').textContent = score;
+  //   } else {
+  //     resultMessage = 'You lost the game!';
+  //     document.querySelector('.score').textContent = 0;
+  //     document.querySelector('body').style.backgroundColor = '#FF0000';
+  //   }
+  // }
+  // // when guess too high
+  // else if (guess > secretNumber) {
+  //   if (score > 1) {
+  //     resultMessage = '📈 Too high!';
+  //     score--;
+  //     document.querySelector('.score').textContent = score;
+  //   } else {
+  //     resultMessage = 'You lost the game!';
+  //     document.querySelector('.score').textContent = 0;
+  //     document.querySelector('body').style.backgroundColor = '#FF0000';
+  //   }
+  // }
   // Update the text content of the ".message" element with the updated resultMessage
   document.querySelector('.message').textContent = resultMessage;
 });
